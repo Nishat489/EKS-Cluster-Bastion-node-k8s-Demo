@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-deployment
+  labels:
+    app: Todo-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: Todo-app
+  template:
+    metadata:
+      labels:
+        app: Todo-app
+    spec:
+      containers:
+      - name: Todo-app
+        image: dockerhub489/demo-cluster:v1  #  Your pushed image
+        ports:
+        - containerPort: 3000        #  Change if your app uses a different port
+
